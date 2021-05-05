@@ -1,7 +1,11 @@
 package routes
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/maykonmori1993/estudo/controllers"
+)
 
 func CarregaRotas() {
-	http.HandleFunc("/", Index)
+	http.HandleFunc("/", controllers.Index)
 }
