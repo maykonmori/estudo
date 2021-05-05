@@ -1,5 +1,7 @@
 package models
 
+import "github.com/maykonmori1993/estudo/db"
+
 type Produto struct {
 	Id         int
 	Nome       string
@@ -8,8 +10,8 @@ type Produto struct {
 	Quantidade int
 }
 
-func buscaTodosOsProdutos() []Produto {
-	db := conectaComBaseDeDados()
+func BuscaTodosOsProdutos() []Produto {
+	db := db.ConectaComBaseDeDados()
 
 	selectDeTodosOsProdutos, err := db.Query("select * from produtos")
 	if err != nil {
@@ -37,4 +39,5 @@ func buscaTodosOsProdutos() []Produto {
 		produtos = append(produtos, p)
 	}
 	defer db.Close()
+	return produtos
 }
